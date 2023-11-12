@@ -1,0 +1,74 @@
+{% load bootstrap3 %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Aplicação para anotações." />
+        <meta name="keywords" content="anotações, anotação" />
+        <meta name="author" content="Jefferson Lobato"/>
+
+        <title>Learning Log</title>
+
+        {% bootstrap_css %}
+        {% bootstrap_javascript %}
+        
+        <style>
+            .ul-none ul{
+                display: none;
+            }
+
+            .help-block{
+                display: none;
+            }
+
+        </style>
+
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button
+                        type="button"
+                        class="navbar-toggle collapsed"                    
+                        data-toggle="collapse"
+                        data-target="#navbar"
+                        aria-expanded="false"
+                    >                       
+                    </button>
+                    <a class="navbar-brand" href="{% url 'index' %}">Learning Log</a>
+                </div>
+            
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav"> 
+                        <li><a href="{% url 'topics' %}">Tópicos</a></li>
+                    </ul>
+                
+                    <ul class="nav navbar-nav navbar-right">
+                        {% if user.is_authenticated %}
+                            <li><a>Olá, {{ user.username }}</a></li>
+                            <li><a href="{% url 'logout' %}">Sair</a></li>
+                        {% else %}
+                            <li><a href="{% url 'register' %}">Registrar</a></li>
+                            <li><a href="{% url 'login' %}">Entrar</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container">
+            <div class="page-header">
+                {% block header %}{% endblock header %}
+            </div>
+            <div>
+                {% block content %}{% endblock content %}
+            </div>
+        </div>
+        
+    </body>
+
+</html>
