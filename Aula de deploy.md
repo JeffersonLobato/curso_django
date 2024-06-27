@@ -109,9 +109,9 @@ sudo apt install python3-venv
 python3 -m venv NomeDoSeuAmbienteVirtual
 ```
 
-- Entrar no ambiente virtual
+- Entrar no ambiente virtual (troque env pelo nome do seu ambiente virtual e confira se realmente o arquivo activate encontra-se neste diretório)
 ```shell
-source env/bin/activate
+source ./env/bin/activate
 ```
 
 - Atualize o pip
