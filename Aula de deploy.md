@@ -1,4 +1,4 @@
-## Como instalar a aplicação?
+## Deploy de aplicação Django
 
 - Para este tutorial, vamos levar em consideração que o usuário linux se chama ubuntu e tem um diretório /home/ubuntu, caso seu usuário tenha outro nome com outro diretório, você terá que substituir pelo nome correto sempre que /home/ubuntu aparecer.
 
@@ -353,10 +353,10 @@ sudo systemctl enable meu_projeto_uwsgi.service
 
 sudo systemctl start meu_projeto_uwsgi.service
 
-# Para verificar o status
+# Caso queira verificar o status
 sudo systemctl status meu_projeto_uwsgi.service
 
-# Para verificar o log
+# Caso queira verificar verificar o log
 journalctl -u meu_projeto_uwsgi.service
 
 ```
@@ -368,6 +368,3 @@ sudo systemctl restart nginx
 ```
 
 Pronto, neste momento sua aplicação tem que está rodando no IP ou domínio que você configurou no arquivo de configuração do nginx e no settings.py do django. Lembre que DEBUG = True no settings.py somente em ambiente de desenvolvimento, python manage.py runserver só para ambiente de desenvolvimento. Para um deploy profissional, sempre deixe DEBUG = False, e utilize como servidor o uWSGI com Nginx, ou Apache, ou Gunicorn entre outros que são específicos para esse tipo de funcionalidade, são mais robustos e escaláveis.
-
-
-
